@@ -10,7 +10,7 @@ La première étape consiste à mener une étude sur les domaines où les techno
 
 ![Schéma explicatif](lien_vers_image_schema.png)
 
-Pour plus de détails, veuillez consulter le [rapport](./docs/Rapport_V0.pdf) et la [présentation](./docs/Presentation_V0.pdf).
+Pour plus de détails, veuillez consulter le [rapport](./Docs/Rapport_V0.pdf) et la [présentation](./Docs/Presentation_V0.pdf).
 
 ## Installation et Configuration
 [Expliquez comment installer et configurer votre solution technique. Vous pouvez faire référence à des readme.md spécifiques dans les sous-dossiers pour plus de détails.]
