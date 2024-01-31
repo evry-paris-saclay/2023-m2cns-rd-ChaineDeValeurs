@@ -36,7 +36,7 @@ Les détails spécifiques sur la configuration des branchements matériels seron
 
 - ESP1 : Actionneurs de jetée de déchets a base de servomoteurs.
 - ESP2 : Aiguillage a l'aide de servomoteurs.
-- ESP3 : Capteurs de détection Ultrason.
+- ESP3 : Capteurs de détection Ultrason. 
 
 Le code de chaque ESP sera fourni de manière générique, ce qui permettra aux utilisateurs de l'adapter en fonction de leur propre configuration matérielle et de leurs besoins spécifiques.
 
