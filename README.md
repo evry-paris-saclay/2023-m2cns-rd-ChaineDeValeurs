@@ -15,9 +15,30 @@ Pour plus de détails, veuillez consulter le [rapport](./docs/report.pdf) et la 
 ## Installation et Configuration
 [Expliquez comment installer et configurer votre solution technique. Vous pouvez faire référence à des readme.md spécifiques dans les sous-dossiers pour plus de détails.]
 
-### Arduino
-- Instructions d'installation du code Arduino.
-- Configuration des branchements matériels.
+## Arduino
+
+### Instructions d'installation du code Arduino
+
+Le code fourni pour ce projet sera destiné à être utilisé sur trois cartes ESP32 distinctes, chacune remplissant un rôle spécifique dans le système de gestion des déchets de santé.
+
+#### ESP1 - Gestion de la jetée des déchets
+Ce code sera chargé sur la première carte ESP32 et sera responsable de la gestion de la jetée des déchets. Il s'occupera d'enclancher le mécanisme de jetée et de transmettre les informations nécessaires a la platform IoT.
+
+#### ESP2 - Gestion de l'aiguillage
+Sur la deuxième carte ESP32, le code sera chargé pour gérer l'aiguillage des déchets. Cette carte recevra les informations de la Platform IoT concernant le type de déchet jeté et dirigera ensuite le déchet vers le bon conteneur en fonction de sa catégorie.
+
+#### ESP3 - Gestion de l'arrivée des déchets
+Enfin, sur la troisième carte ESP32, le code sera chargé de gérer l'arrivée des déchets dans le réceptacle final. Cette carte s'assurera que les déchets sont correctement reçus et enregistrés dans le système.
+
+### Configuration des branchements matériels
+
+Les détails spécifiques sur la configuration des branchements matériels seront fournis dans le code Arduino de chaque ESP. Cependant, voici une vue d'ensemble générale des composants matériels nécessaires et de leur configuration typique :
+
+- ESP1 : Actionneurs de jetée de déchets a base de servomoteurs.
+- ESP2 : Aiguillage a l'aide de servomoteurs.
+- ESP3 : Capteurs de détection Ultrason.
+
+Le code de chaque ESP sera fourni de manière générique, ce qui permettra aux utilisateurs de l'adapter en fonction de leur propre configuration matérielle et de leurs besoins spécifiques.
 
 ### IoT Platform
 - Instructions d'installation de la plateforme IoT.
