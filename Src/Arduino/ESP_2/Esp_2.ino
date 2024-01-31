@@ -18,6 +18,7 @@ WiFiClient espClient; // Créer un objet de type WiFiClient pour la connexion Wi
 PubSubClient client(espClient); // Créer un objet de type PubSubClient pour la communication MQTT
 
 int positionChoice = 0; // Variable pour stocker le choix de position des servomoteurs
+bool movementDone = true; // Variable pour indiquer si le mouvement a été effectué
 
 // Fonction pour contrôler les servomoteurs
 void servoTask(void *pvParameters) {
@@ -25,26 +26,27 @@ void servoTask(void *pvParameters) {
   const int step = 2; // Pas de mouvement à chaque itération
 
   for (;;) {
-    if (positionChoice == 0) { // Si le choix de position est 0
-      // Faire passer le premier servomoteur de 0 à 90 degrés
-      for (int angle = 0; angle <= 90; angle += step) {
-        servo1.write(angle); // Déplacer le premier servomoteur à l'angle actuel
-        servo2.write(180 - angle); // Déplacer le deuxième servomoteur à l'angle symétrique
-        delay(delayTime); // Attendre un court instant
+    if (!movementDone) { // Si le mouvement n'a pas encore été effectué
+        // Faire passer le premier servomoteur de 0 à 90 degrés et le deuxieme de 180 a 90
+        for (int angle = 0; angle <= 90; angle += step) {
+          servo1.write(angle); // Déplacer le premier servomoteur à l'angle actuel
+          servo2.write(180 - angle); // Déplacer le deuxième servomoteur à l'angle symétrique
+          delay(delayTime); // Attendre un court instant
+        }
+        // Faire passer le premier 90 a 0 et le deuxieme de 90 a 180 
+        for (int angle = 180; angle >= 90; angle -= step) {
+          servo1.write(angle); // Déplacer le premier servomoteur à l'angle actuel
+          servo2.write(180 - angle); // Déplacer le deuxième servomoteur à l'angle symétrique
+          delay(delayTime); // Attendre un court instant
+        }
       }
-    } else if (positionChoice == 1) { // Sinon, si le choix de position est 1
-      // Faire passer les deux servomoteurs de 180 à 90 degrés symétriquement
-      for (int angle = 180; angle >= 90; angle -= step) {
-        servo1.write(angle); // Déplacer le premier servomoteur à l'angle actuel
-        servo2.write(180 - angle); // Déplacer le deuxième servomoteur à l'angle symétrique
-        delay(delayTime); // Attendre un court instant
-      }
+
+      movementDone = true; // Indiquer que le mouvement a été effectué
     }
 
     delay(1000); // Attendre 1 seconde avant de recommencer
   }
 }
-
 
 void setup() {
   Serial.begin(115200); // Initialiser la communication série à 115200 bits par seconde
@@ -106,6 +108,7 @@ void callback(char *topic, byte *payload, unsigned int length) {
     Serial.print(receivedChar);
     if (isdigit(receivedChar)) { // Si le caractère reçu est un chiffre
       positionChoice = receivedChar - '0'; // Convertir le caractère en nombre
+      movementDone = false; // Réinitialiser la variable pour indiquer qu'un nouveau mouvement est nécessaire
     }
   }
   Serial.println();
