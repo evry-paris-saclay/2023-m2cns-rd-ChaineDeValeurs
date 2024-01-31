@@ -21,18 +21,30 @@ int positionChoice = 0; // Variable pour stocker le choix de position des servom
 
 // Fonction pour contrôler les servomoteurs
 void servoTask(void *pvParameters) {
+  const int delayTime = 10; // Temps d'attente entre chaque étape de mouvement (en millisecondes)
+  const int step = 2; // Pas de mouvement à chaque itération
+
   for (;;) {
     if (positionChoice == 0) { // Si le choix de position est 0
-      servo1.write(0); // Déplacer le premier servomoteur à la position 0 degré
-      servo2.write(0); // Déplacer le deuxième servomoteur à la position 0 degré
+      // Faire passer le premier servomoteur de 0 à 90 degrés
+      for (int angle = 0; angle <= 90; angle += step) {
+        servo1.write(angle); // Déplacer le premier servomoteur à l'angle actuel
+        servo2.write(180 - angle); // Déplacer le deuxième servomoteur à l'angle symétrique
+        delay(delayTime); // Attendre un court instant
+      }
     } else if (positionChoice == 1) { // Sinon, si le choix de position est 1
-      servo1.write(90); // Déplacer le premier servomoteur à la position 90 degrés
-      servo2.write(90); // Déplacer le deuxième servomoteur à la position 90 degrés
+      // Faire passer les deux servomoteurs de 180 à 90 degrés symétriquement
+      for (int angle = 180; angle >= 90; angle -= step) {
+        servo1.write(angle); // Déplacer le premier servomoteur à l'angle actuel
+        servo2.write(180 - angle); // Déplacer le deuxième servomoteur à l'angle symétrique
+        delay(delayTime); // Attendre un court instant
+      }
     }
 
-    delay(1000); // Attendre 1 seconde
+    delay(1000); // Attendre 1 seconde avant de recommencer
   }
 }
+
 
 void setup() {
   Serial.begin(115200); // Initialiser la communication série à 115200 bits par seconde
