@@ -33,7 +33,7 @@ Pour plus de détails, veuillez consulter le [rapport](./docs/report.pdf) et la 
 ## Tests et Analyses de Performance
 [Décrivez les tests effectués sur le système, y compris les KPIs (Key Performance Indicators). Discutez de la robustesse, de la précision, des performances, etc.]
 ## Encadrant
--Hamidi Massinissa
+- Hamidi Massinissa
 ## Auteurs
 - Laib Ramy
 - Saraoui Keltouma
