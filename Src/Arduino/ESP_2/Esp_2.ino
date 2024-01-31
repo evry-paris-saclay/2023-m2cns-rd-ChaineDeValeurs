@@ -1,104 +1,99 @@
-#include <WiFi.h> // Inclure la bibliothèque WiFi pour la connexion Wi-Fi
-#include <PubSubClient.h> // Inclure la bibliothèque PubSubClient pour la communication MQTT
-#include <ESP32Servo.h> // Inclure la bibliothèque ESP32Servo pour contrôler les servomoteurs
+#include <WiFi.h>
+#include <PubSubClient.h>
+#include <ESP32Servo.h>
 
-// Remplacer "your-ssid", "your-password" et "your-mqtt-broker-ip" par les valeurs appropriées
-const char *ssid = "votre-ssid"; // SSID de votre réseau Wi-Fi
-const char *password = "votre-mot-de-passe"; // Mot de passe de votre réseau Wi-Fi
-const char *mqttBroker = "votre-adresse-ip-broker-mqtt"; // Adresse IP de votre broker MQTT
-const int mqttPort = 1883; // Port MQTT par défaut
+const char *ssid = "votre-ssid";
+const char *password = "votre-mot-de-passe";
+const char *mqttBroker = "votre-adresse-ip-broker-mqtt";
+const int mqttPort = 1883;
 
-const int servoPin1 = 18; // Broche utilisée pour le premier servomoteur
-const int servoPin2 = 19; // Broche utilisée pour le deuxième servomoteur
+const int servoPin1 = 18;
+const int servoPin2 = 19;
 
-Servo servo1; // Déclarer le premier objet Servo
-Servo servo2; // Déclarer le deuxième objet Servo
+Servo servo1;
+Servo servo2;
 
-WiFiClient espClient; // Créer un objet de type WiFiClient pour la connexion Wi-Fi
-PubSubClient client(espClient); // Créer un objet de type PubSubClient pour la communication MQTT
+WiFiClient espClient;
+PubSubClient client(espClient);
 
-int positionChoice ; // Variable 
-bool movementDone = true; // Variable pour indiquer si le mouvement a été effectué
+bool movementDone = true;
+portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;
 
-// Fonction pour contrôler les servomoteurs
 void servoTask(void *pvParameters) {
-  const int delayTime = 10; // Temps d'attente entre chaque étape de mouvement (en millisecondes)
-  const int step = 2; // Pas de mouvement à chaque itération
+  const int delayTime = 10;
+  const int step = 2;
 
   for (;;) {
-    if (!movementDone) { // Si le mouvement n'a pas encore été effectué
-        // Faire passer le premier servomoteur de 0 à 90 degrés et le deuxieme de 180 a 90
-        for (int angle = 0; angle <= 90; angle += step) {
-          servo1.write(angle); // Déplacer le premier servomoteur à l'angle actuel
-          servo2.write(180 - angle); // Déplacer le deuxième servomoteur à l'angle symétrique
-          delay(delayTime); // Attendre un court instant
-        }
-        // Faire passer le premier 90 a 0 et le deuxieme de 90 a 180 
-        for (int angle = 180; angle >= 90; angle -= step) {
-          servo1.write(angle); // Déplacer le premier servomoteur à l'angle actuel
-          servo2.write(180 - angle); // Déplacer le deuxième servomoteur à l'angle symétrique
-          delay(delayTime); // Attendre un court instant
-        }
+    if (!movementDone) {
+      portENTER_CRITICAL(&mux);
+      for (int angle = 0; angle <= 90; angle += step) {
+        servo1.write(angle);
+        servo2.write(180 - angle);
+        delay(delayTime);
       }
-
-      movementDone = true; // Indiquer que le mouvement a été effectué
+      delay(1000); // Attendre un court instant après le mouvement
+      for (int angle = 90; angle >= 0; angle -= step) { // Revenir à la position initiale
+        servo1.write(angle);
+        servo2.write(180 - angle);
+        delay(delayTime);
+      }
+      movementDone = true;
+      portEXIT_CRITICAL(&mux);
     }
-
-    delay(1000); // Attendre 1 seconde avant de recommencer
+    delay(1000);
   }
 }
 
 void setup() {
-  Serial.begin(115200); // Initialiser la communication série à 115200 bits par seconde
+  Serial.begin(115200);
 
-  WiFi.begin(ssid, password); // Se connecter au réseau Wi-Fi
-  while (WiFi.status() != WL_CONNECTED) { // Attendre jusqu'à ce que la connexion Wi-Fi soit établie
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
     Serial.println("Connexion au réseau Wi-Fi...");
   }
   Serial.println("Connecté au réseau Wi-Fi");
 
-  servo1.attach(servoPin1, 500, 2400); // Attacher le premier servomoteur à la broche spécifiée
-  servo2.attach(servoPin2, 500, 2400); // Attacher le deuxième servomoteur à la broche spécifiée
+  servo1.attach(servoPin1, 500, 2400);
+  servo2.attach(servoPin2, 500, 2400);
 
   xTaskCreate(
-    servoTask, // Nom de la fonction de la tâche
-    "ServoTask", // Nom de la tâche
-    10000, // Taille de la pile de la tâche (en mots)
-    NULL, // Paramètres de la tâche
-    1, // Priorité de la tâche
-    NULL // Identificateur de la tâche
+    servoTask,
+    "ServoTask",
+    10000,
+    NULL,
+    1,
+    NULL
   );
 
-  client.setServer(mqttBroker, mqttPort); // Configurer le broker MQTT avec l'adresse IP et le port
+  client.setServer(mqttBroker, mqttPort);
 }
 
 void loop() {
-  if (!client.connected()) { // Si le client MQTT n'est pas connecté
-    reconnect(); // Tenter de se reconnecter
+  if (!client.connected()) {
+    reconnect();
   }
 
-  client.loop(); // Maintenir la connexion MQTT
+  client.loop();
 
-  delay(500); // Attendre 0.5 seconde
+  delay(500);
 }
 
 void reconnect() {
-  while (!client.connected()) { // Tant que le client MQTT n'est pas connecté
+  while (!client.connected()) {
     Serial.print("Tentative de connexion MQTT...");
-    if (client.connect("ESP32Client")) { // Se connecter au broker MQTT avec un nom client
+    if (client.connect("ESP32Client")) {
       Serial.println("Connecté");
-      client.subscribe("servo/positionChoice"); // S'abonner au sujet pour recevoir les commandes de position
+      client.subscribe("servo/move");
     } else {
       Serial.print("Échec, rc=");
       Serial.print(client.state());
       Serial.println(" Réessayer dans 5 secondes");
-      delay(5000); // Attendre 5 secondes avant de réessayer
+      delay(5000);
     }
   }
 }
 
-// Fonction de rappel (callback) appelée lorsqu'un message MQTT est reçu
 void callback(char *topic, byte *payload, unsigned int length) {
   Serial.print("Message reçu [");
   Serial.print(topic);
@@ -106,8 +101,10 @@ void callback(char *topic, byte *payload, unsigned int length) {
   for (int i = 0; i < length; i++) {
     char receivedChar = (char)payload[i];
     Serial.print(receivedChar);
-    if (isdigit(receivedChar)) { // Si le caractère reçu est un chiffre
-      movementDone = false; // Réinitialiser la variable pour indiquer qu'un nouveau mouvement est nécessaire
+    if (receivedChar == '1') {
+      portENTER_CRITICAL(&mux);
+      movementDone = false;
+      portEXIT_CRITICAL(&mux);
     }
   }
   Serial.println();
