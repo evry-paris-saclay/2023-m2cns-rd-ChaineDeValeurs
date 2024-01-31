@@ -40,10 +40,10 @@ Les détails spécifiques sur la configuration des branchements matériels seron
 
 Le code de chaque ESP sera fourni de manière générique, ce qui permettra aux utilisateurs de l'adapter en fonction de leur propre configuration matérielle et de leurs besoins spécifiques.
 
-##Plateforme IoT avec Node-RED 
+## Plateforme IoT avec Node-RED 
 
 Nous avons mis en place une plateforme IoT basée sur Node-RED pour centraliser et gérer notre projet de gestion des déchets de santé. Cette plateforme permet de coordonner les différentes étapes du processus, depuis la détection et la classification des déchets jusqu'à leur traitement final.
-###Fonctionnalités Principales :
+### Fonctionnalités Principales :
 
 -    Interface Visuelle Intuitive : Node-RED offre une interface visuelle intuitive, qui nous permet de créer et de gérer facilement les flux de données et les interactions entre les différents composants de notre système.
 
@@ -53,7 +53,7 @@ Nous avons mis en place une plateforme IoT basée sur Node-RED pour centraliser 
 
 -    Gestion des Flux de Travail : Node-RED nous permet de définir et de gérer les flux de travail de notre système, en orchestrant les différentes étapes du processus de gestion des déchets. Par exemple, nous configurons des scénarios pour déclencher l'aiguillage des déchets en fonction de leur catégorie, et pour actionner la plateforme mobile pour le largage des déchets dans le réceptacle final.
 
-###Utilisation dans notre Projet :
+### Utilisation dans notre Projet :
 
 Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordination des opérations de gestion des déchets de santé :
 
