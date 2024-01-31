@@ -17,7 +17,7 @@ Servo servo2; // Déclarer le deuxième objet Servo
 WiFiClient espClient; // Créer un objet de type WiFiClient pour la connexion Wi-Fi
 PubSubClient client(espClient); // Créer un objet de type PubSubClient pour la communication MQTT
 
-int positionChoice = 0; // Variable pour stocker le choix de position des servomoteurs
+int positionChoice ; // Variable 
 bool movementDone = true; // Variable pour indiquer si le mouvement a été effectué
 
 // Fonction pour contrôler les servomoteurs
@@ -107,7 +107,6 @@ void callback(char *topic, byte *payload, unsigned int length) {
     char receivedChar = (char)payload[i];
     Serial.print(receivedChar);
     if (isdigit(receivedChar)) { // Si le caractère reçu est un chiffre
-      positionChoice = receivedChar - '0'; // Convertir le caractère en nombre
       movementDone = false; // Réinitialiser la variable pour indiquer qu'un nouveau mouvement est nécessaire
     }
   }
