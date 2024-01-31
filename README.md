@@ -40,9 +40,32 @@ Les détails spécifiques sur la configuration des branchements matériels seron
 
 Le code de chaque ESP sera fourni de manière générique, ce qui permettra aux utilisateurs de l'adapter en fonction de leur propre configuration matérielle et de leurs besoins spécifiques.
 
-### IoT Platform
-- Instructions d'installation de la plateforme IoT.
-- Configuration des fichiers Docker, flux.json, dashboard.json, etc.
+##Plateforme IoT avec Node-RED 
+
+Nous avons mis en place une plateforme IoT basée sur Node-RED pour centraliser et gérer notre projet de gestion des déchets de santé. Cette plateforme permet de coordonner les différentes étapes du processus, depuis la détection et la classification des déchets jusqu'à leur traitement final.
+###Fonctionnalités Principales :
+
+-    Interface Visuelle Intuitive : Node-RED offre une interface visuelle intuitive, qui nous permet de créer et de gérer facilement les flux de données et les interactions entre les différents composants de notre système.
+
+-    Intégration des Dispositifs IoT : Nous utilisons Node-RED pour intégrer les divers dispositifs IoT utilisés dans notre projet, tels que les capteurs de détection de déchets, les actionneurs d'aiguillage, les servomoteurs de la plateforme mobile, les caméras IP pour la prise de photos, et les ESP pour le contrôle des opérations.
+
+-    Traitement des Données en Temps Réel : Node-RED nous permet de traiter les données en temps réel en provenance des capteurs et des caméras. Par exemple, nous utilisons des nœuds de traitement d'images pour analyser les photos des déchets et des nœuds de machine learning pour classifier les déchets en fonction de leur catégorie.
+
+-    Gestion des Flux de Travail : Node-RED nous permet de définir et de gérer les flux de travail de notre système, en orchestrant les différentes étapes du processus de gestion des déchets. Par exemple, nous configurons des scénarios pour déclencher l'aiguillage des déchets en fonction de leur catégorie, et pour actionner la plateforme mobile pour le largage des déchets dans le réceptacle final.
+
+###Utilisation dans notre Projet :
+
+Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordination des opérations de gestion des déchets de santé :
+
+-    Détection et Classification des Déchets : Lorsqu'un déchet est déposé sur la plateforme mobile, une photo est prise à l'aide d'une caméra IP et analysée par notre modèle de machine learning. Node-RED orchestre ce processus en déclenchant la capture de la photo, l'analyse par le modèle ML, et la classification du déchet en fonction de sa catégorie.
+
+-    Aiguillage des Déchets : Une fois que le déchet est classifié, Node-RED envoie un signal à l'ESP2 pour ajuster l'aiguillage en fonction de la catégorie du déchet.
+
+-    Largage des Déchets : Après que l'aiguillage est en place, Node-RED envoie un signal à l'ESP1 pour actionner la plateforme mobile à l'aide de servomoteurs, permettant ainsi le largage du déchet dans le réceptacle final.
+
+-    Traitement Final des Déchets : Le réceptacle final est équipé d'un capteur ultrasonique qui détecte le passage du déchet. Lorsque le déchet est détecté, l'ESP3 envoie un signal à la plateforme via Node-RED, indiquant que le déchet a été traité avec succès.
+
+
 
 ### Machine Learning
 - Instructions pour la mise en place de l'environnement ML.
