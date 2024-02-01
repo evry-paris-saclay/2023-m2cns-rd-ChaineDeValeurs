@@ -12,10 +12,14 @@ La première étape consiste à mener une étude sur les domaines où les techno
 graph TD;
     camera-->node.RED;
     node.RED-->ESP_1;
-    ESP_1-->Servo(1,2,3,4);
+    ESP_1-->Servo_1;
+    ESP_1-->Servo_2;
+    ESP_1-->Servo_3;
+    ESP_1-->Servo_4;
     ESP_1-->node.RED;
     node.RED-->ESP_2;
-    ESP_2-->Servo(5,6);
+    ESP_2-->Servo_5;
+    ESP_2-->Servo_6;
     censor-->ESP_3;
     ESP_3-->node.RED;
 ```
