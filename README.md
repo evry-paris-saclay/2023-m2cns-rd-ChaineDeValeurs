@@ -211,7 +211,7 @@ plt.show()
 ```
 Assurez-vous d'avoir installé Seaborn en exécutant pip install seaborn si vous ne l'avez pas déjà fait.
 
-![Matrice de Confusion](chemin/vers/votre/image.png)
+![Matrice de Confusion](Src/Images/MatriceDeConfusion.png)
 
 
 ### Calcul du Rappel et de la Précision
@@ -244,7 +244,7 @@ print(f"Precision: {precision}")
 
 Dans ce code, recall_score et precision_score sont utilisés pour évaluer le rappel et la précision en considérant les vraies étiquettes (y_test) et les prédictions du modèle (y_pred). L'argument average='weighted' spécifie l'utilisation de la moyenne pondérée pour traiter les cas où les classes ne sont pas équilibrées de la même manière. Vous pouvez ajuster l'argument average en fonction de vos besoins spécifiques.
 
-![Rappel et Précision](chemin/vers/votre/image.png)
+![Rappel et Précision](Src/Images/RappelPrécision.png)
 
 ### F1 Score
 
@@ -272,7 +272,7 @@ print(f"F1 Score: {f1}")
 
 Dans ce code, la fonction f1_score est utilisée pour calculer le F1 Score en comparant les vraies étiquettes (y_test) avec les prédictions du modèle (y_pred). Comme pour le rappel et la précision, l'argument average='weighted' est utilisé pour prendre en compte le déséquilibre des classes. Vous pouvez ajuster l'argument average selon vos besoins spécifiques.
 
-![F1 Score](chemin/vers/votre/image.png)
+![F1 Score](Src/Images/F1Score.png)
 
 ### Courbes ROC-AUC
 
@@ -312,7 +312,7 @@ plt.show()
 
 Dans ce code, vous itérez sur chaque classe, calculez les valeurs de faux positif (fpr) et vrai positif (tpr), puis tracez la courbe ROC pour chaque classe. La légende de la courbe inclut également l'AUC (aire sous la courbe) pour chaque classe. La ligne en pointillés représente la ligne de référence aléatoire.
 
-![Courbes ROC-AUC](chemin/vers/votre/image.png)
+![Courbes ROC-AUC](Src/Images/CourbesROC-AUC.png)
 
 
 
