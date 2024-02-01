@@ -244,7 +244,73 @@ Dans ce code, recall_score et precision_score sont utilisés pour évaluer le ra
 
 ![Rappel et de la Précision](chemin/vers/votre/image.png)
 
+### F1 Score
 
+Pour calculer le F1 Score en utilisant `sklearn.metrics.f1_score`, vous pouvez ajouter le code suivant à votre script Python :
+
+```python
+from sklearn.metrics import f1_score
+
+# ... Votre code existant ...
+
+# Évaluation du modèle
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print(f"Test Accuracy: {test_acc}")
+
+# Obtenez les probabilités des classes pour chaque échantillon de test
+y_probs = model.predict(x_test)
+
+# Obtenez les classes prédites en choisissant l'indice avec la probabilité la plus élevée
+y_pred = np.argmax(y_probs, axis=1)
+
+# Calcul du F1 Score
+f1 = f1_score(y_test, y_pred, average='weighted')
+print(f"F1 Score: {f1}")
+```
+
+Dans ce code, la fonction f1_score est utilisée pour calculer le F1 Score en comparant les vraies étiquettes (y_test) avec les prédictions du modèle (y_pred). Comme pour le rappel et la précision, l'argument average='weighted' est utilisé pour prendre en compte le déséquilibre des classes. Vous pouvez ajuster l'argument average selon vos besoins spécifiques.
+
+![F1 Score](chemin/vers/votre/image.png)
+
+### Courbes ROC-AUC
+
+Si vous souhaitez afficher une courbe ROC pour chaque classe dans un problème de classification multi-classes, vous pouvez utiliser la bibliothèque matplotlib pour le tracé. Cependant, il est important de noter que la courbe ROC n'est généralement pas utilisée dans des problèmes de classification multi-classes de manière directe. Plutôt, on calcule les courbes ROC pour chaque classe individuelle et les affiche séparément.
+
+Voici comment vous pouvez le faire dans votre script Python :
+
+```python
+from sklearn.metrics import roc_curve, auc
+import matplotlib.pyplot as plt
+
+# ... Votre code existant ...
+
+# Évaluation du modèle
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print(f"Test Accuracy: {test_acc}")
+
+# Obtenez les probabilités des classes pour chaque échantillon de test
+y_probs = model.predict(x_test)
+
+# Tracé des courbes ROC pour chaque classe
+plt.figure(figsize=(8, 6))
+
+for i in range(len(classes)):
+    fpr, tpr, _ = roc_curve(y_test == i, y_probs[:, i])
+    roc_auc = auc(fpr, tpr)
+
+    plt.plot(fpr, tpr, label=f'{classes[i]} (AUC = {roc_auc:.2f})')
+
+plt.plot([0, 1], [0, 1], linestyle='--', color='gray', label='Random')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('ROC Curve for Each Class')
+plt.legend(loc='lower right')
+plt.show()
+```
+
+Dans ce code, vous itérez sur chaque classe, calculez les valeurs de faux positif (fpr) et vrai positif (tpr), puis tracez la courbe ROC pour chaque classe. La légende de la courbe inclut également l'AUC (aire sous la courbe) pour chaque classe. La ligne en pointillés représente la ligne de référence aléatoire.
+
+![Courbes ROC-AUC](chemin/vers/votre/image.png)
 
 
 
