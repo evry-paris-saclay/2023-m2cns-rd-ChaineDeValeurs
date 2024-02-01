@@ -11,18 +11,18 @@ La première étape consiste à mener une étude sur les domaines où les techno
 ### Le flux de notre systeme ci-dessous:
 ```mermaid
 flowchart TD;
-    camera-->c{node.RED};
-    c{node.RED}-Position->ESP_1;
+    camera--image-->c{node.RED};
+    c{node.RED}--Position-->ESP_1;
     ESP_1-->Servo_1;
     ESP_1-->Servo_2;
     ESP_1-->Servo_3;
     ESP_1-->Servo_4;
-    ESP_1-confirmation->c{node.RED};
-    c{node.RED}-trigger->ESP_2;
+    ESP_1--confirmation-->c{node.RED};
+    c{node.RED}--trigger-->ESP_2;
     ESP_2-->Servo_5;
     ESP_2-->Servo_6;
     censor-->ESP_3;
-    ESP_3-confirmation->c{node.RED};
+    ESP_3--confirmation-->c{node.RED};
 ```
 
 ![Schéma explicatif](lien_vers_image_schema.png)
