@@ -12,17 +12,17 @@ La première étape consiste à mener une étude sur les domaines où les techno
 ```mermaid
 flowchart TD;
     camera-->c{node.RED};
-    c{node.RED}-->ESP_1;
+    c{node.RED}-Position->ESP_1;
     ESP_1-->Servo_1;
     ESP_1-->Servo_2;
     ESP_1-->Servo_3;
     ESP_1-->Servo_4;
-    ESP_1-->c{node.RED};
-    c{node.RED}-->ESP_2;
+    ESP_1-confirmation->c{node.RED};
+    c{node.RED}-trigger->ESP_2;
     ESP_2-->Servo_5;
     ESP_2-->Servo_6;
     censor-->ESP_3;
-    ESP_3-->c{node.RED};
+    ESP_3-confirmation->c{node.RED};
 ```
 
 ![Schéma explicatif](lien_vers_image_schema.png)
