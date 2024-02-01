@@ -78,8 +78,7 @@ Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordina
 
 ### Configuration de l'environnement de développement
 - Clonez ce dépôt :
-    git clone https://github.com/votre-utilisateur/votre-projet.git
-    cd votre-projet
+    git clone https://github.com/evry-paris-saclay/2023-m2cns-rd-ChaineDeValeurs.git
 
 - Ouvrez le fichier Jupyter Notebook ou le script Python dans votre environnement de développement, par exemple :
     jupyter notebook mon_notebook.ipynb
