@@ -175,8 +175,10 @@ plt.legend(loc='upper right')
 plt.show()
 ```
 Ces courbes permettent de visualiser la progression de la précision et de la perte pendant l'entraînement du modèle.
-
-![Courbe d'entraînement](Src/Images/CourbeEntraînement.png)
+#### Accuracy
+![Courbe d'entraînement](Src/Images/CourbeEntraînementAccuracy.png)
+#### Loss 
+![Courbe d'entraînement](Src/Images/CourbeEntraînementLoss.png)
 
 ### Affichage de la Matrice de Confusion
 
