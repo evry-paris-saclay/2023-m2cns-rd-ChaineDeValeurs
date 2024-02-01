@@ -147,8 +147,6 @@ Ces étapes devraient vous permettre de configurer l'environnement nécessaire p
 ## Fonctionnement du Système
 [Décrivez le fonctionnement du système et montrez un exemple. Utilisez des images des branchements, des captures d'écran de la plateforme, etc. Une vidéo de démonstration bien scénarisée peut aussi être incluse.]
 
-## Tests et Analyses de Performance
-[Décrivez les tests effectués sur le système, y compris les KPIs (Key Performance Indicators). Discutez de la robustesse, de la précision, des performances, etc.]
 
 ## Tests et Analyses de Performance
 
