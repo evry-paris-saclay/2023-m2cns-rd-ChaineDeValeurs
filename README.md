@@ -178,11 +178,6 @@ Ces courbes permettent de visualiser la progression de la précision et de la pe
 
 ![Courbe d'entraînement](chemin/vers/votre/image.png)
 
-
-# Projet de Recherche: Classification d'Images Médicales
-
-## Machine Learning
-
 ### Affichage de la Matrice de Confusion
 
 Pour évaluer les performances du modèle, nous utilisons la matrice de confusion, qui montre le nombre de vrais positifs, de vrais négatifs, de faux positifs et de faux négatifs. Vous pouvez afficher la matrice de confusion en utilisant le code suivant dans votre script Python ou Jupyter Notebook :
