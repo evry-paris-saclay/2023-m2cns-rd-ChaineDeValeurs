@@ -8,9 +8,27 @@ Les quantités de produits plastiques utilisés dans les activités de santé, t
 
 La première étape consiste à mener une étude sur les domaines où les technologies de l'Internet des Objets (IoT) pourraient améliorer la manipulation des produits liés à la santé. Cela inclut des aspects tels que la gestion des stocks, les conteneurs de déchets intelligents, la gestion des déchets et la surveillance des conditions de stérilisation des équipements. Ensuite, nous somme chargé de concevoir et de mettre en œuvre une solution concrète basée sur des dispositifs connectés qui répond à l'un des domaines identifiés.
 
+### Le flux de notre systeme ci-dessous:
+```mermaid
+flowchart TD;
+    camera--image-->c{node.RED};
+    c{node.RED}--Position-->ESP_1;
+    ESP_1-->Servo_1;
+    ESP_1-->Servo_2;
+    ESP_1-->Servo_3;
+    ESP_1-->Servo_4;
+    ESP_1--confirmation-->c{node.RED};
+    c{node.RED}--trigger-->ESP_2;
+    ESP_2-->Servo_5;
+    ESP_2-->Servo_6;
+    censor-->ESP_3;
+    ESP_3--confirmation-->c{node.RED};
+```
+
 ![Schéma explicatif](lien_vers_image_schema.png)
 
-Pour plus de détails, veuillez consulter le [rapport](./Docs/Rapport_V0.pdf) et la [présentation](./Docs/Presentation_V0.pdf).
+
+Pour plus de détails, veuillez consulter le [rapport](./Src/Docs/Rapport_V0.pdf) et la [présentation](./Src/Docs/Presentation_V0.pdf).
 
 ## Installation et Configuration
 [Expliquez comment installer et configurer votre solution technique. Vous pouvez faire référence à des readme.md spécifiques dans les sous-dossiers pour plus de détails.]
@@ -73,15 +91,14 @@ Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordina
 ### Prérequis
 - Assurez-vous d'avoir Python 3.x installé sur votre machine.
 - Installez la bibliothèque tensorflow à l'aide de la commande suivante :
-    pip install tensorflow
-
+    ```pip install tensorflow```
 
 ### Configuration de l'environnement de développement
 - Clonez ce dépôt :
-    git clone https://github.com/evry-paris-saclay/2023-m2cns-rd-ChaineDeValeurs.git
+    ```git clone https://github.com/evry-paris-saclay/2023-m2cns-rd-ChaineDeValeurs.git```
 
 - Ouvrez le fichier Jupyter Notebook ou le script Python dans votre environnement de développement, par exemple :
-    jupyter notebook mon_notebook.ipynb
+    ```jupyter notebook mon_notebook.ipynb```
 
 - Modifiez le répertoire de données (data_dir) dans le script pour refléter le chemin vers votre jeu de données médicales.
 
