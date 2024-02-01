@@ -176,7 +176,7 @@ plt.show()
 ```
 Ces courbes permettent de visualiser la progression de la précision et de la perte pendant l'entraînement du modèle.
 
-![Courbe d'entraînement](2023-m2cns-rd-ChaineDeValeurs/Src/Images/CourbeEntraînement.png)
+![Courbe d'entraînement](Src/Images/CourbeEntraînement.png)
 
 ### Affichage de la Matrice de Confusion
 
