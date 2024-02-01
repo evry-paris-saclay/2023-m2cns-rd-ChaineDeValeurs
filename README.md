@@ -68,8 +68,64 @@ Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordina
 
 
 ### Machine Learning
-- Instructions pour la mise en place de l'environnement ML.
-- Configuration des données, des modèles ML, et des fonctions pour l'entraînement des modèles.
+## Instructions pour la mise en place de l'environnement ML
+
+### Prérequis
+- Assurez-vous d'avoir Python 3.x installé sur votre machine.
+- Installez la bibliothèque tensorflow à l'aide de la commande suivante :
+    pip install -r
+
+### Configuration de l'environnement de développement
+- Clonez ce dépôt :
+    git clone https://github.com/votre-utilisateur/votre-projet.git
+    cd votre-projet
+
+- Ouvrez le fichier Jupyter Notebook ou le script Python dans votre environnement de développement, par exemple :
+    jupyter notebook mon_notebook.ipynb
+
+- Modifiez le répertoire de données (data_dir) dans le script pour refléter le chemin vers votre jeu de données médicales.
+
+Ces étapes devraient vous permettre de configurer l'environnement nécessaire pour exécuter le code sans problème.
+
+
+## Configuration des données, des modèles ML, et des fonctions pour l'entraînement des modèles
+
+### Chargement des données
+
+- Assurez-vous que les images médicales sont organisées dans des répertoires par classe. Modifiez la variable `data_dir` dans le script pour pointer vers le répertoire racine de vos données.
+
+### Prétraitement des images
+
+- Les images sont redimensionnées à une taille de 100x100 pixels et normalisées entre 0 et 1.
+
+### Division des données
+
+- Les données sont divisées en ensembles d'entraînement, de validation et de test.
+
+### Configuration du modèle
+
+- Le modèle CNN est défini dans le script avec des couches de convolution, de pooling et de neurones denses. La dernière couche utilise une fonction d'activation softmax pour la classification multi-classes.
+
+### Compilation du modèle
+
+- L'optimiseur 'adam' et la fonction de perte 'sparse_categorical_crossentropy' sont utilisés pour la compilation du modèle.
+
+### Entraînement du modèle
+
+- Le modèle est entraîné avec 10 époques sur les données d'entraînement, en utilisant les données de validation pour le suivi.
+
+### Évaluation du modèle
+
+- Le modèle est évalué sur les données de test, et la précision du test est affichée.
+
+### Sauvegarde et chargement du modèle
+
+- Le modèle est sauvegardé au format h5 après l'entraînement. Vous pouvez charger le modèle sauvegardé ultérieurement à l'aide de la fonction de chargement.
+
+### Prédiction sur une nouvelle image
+
+- Utilisez le modèle entraîné pour prédire la classe d'une nouvelle image en ajustant le chemin d'accès de l'image dans la variable `img_path`.
+
 
 ## Fonctionnement du Système
 [Décrivez le fonctionnement du système et montrez un exemple. Utilisez des images des branchements, des captures d'écran de la plateforme, etc. Une vidéo de démonstration bien scénarisée peut aussi être incluse.]
