@@ -176,7 +176,7 @@ plt.show()
 ```
 Ces courbes permettent de visualiser la progression de la précision et de la perte pendant l'entraînement du modèle.
 
-git add chemin/vers/votre/image.png
+![Courbe d'entraînement](chemin/vers/votre/image.png)
 
 
 
