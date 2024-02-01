@@ -209,6 +209,47 @@ plt.show()
 ```
 Assurez-vous d'avoir installé Seaborn en exécutant pip install seaborn si vous ne l'avez pas déjà fait.
 
+![Matrice de Confusion](chemin/vers/votre/image.png)
+
+
+### Calcul du Rappel et de la Précision
+
+Pour évaluer plus en détail les performances du modèle, nous calculons le rappel (recall) et la précision (precision) en utilisant `sklearn.metrics.recall_score` et `sklearn.metrics.precision_score`. Vous pouvez intégrer le code suivant dans votre script Python ou Jupyter Notebook :
+
+```python
+from sklearn.metrics import recall_score, precision_score
+
+# ... Votre code existant ...
+
+# Évaluation du modèle
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print(f"Test Accuracy: {test_acc}")
+
+# Obtenez les probabilités des classes pour chaque échantillon de test
+y_probs = model.predict(x_test)
+
+# Obtenez les classes prédites en choisissant l'indice avec la probabilité la plus élevée
+y_pred = np.argmax(y_probs, axis=1)
+
+# Calcul du rappel (recall)
+recall = recall_score(y_test, y_pred, average='weighted')
+print(f"Recall: {recall}")
+
+# Calcul de la précision (precision)
+precision = precision_score(y_test, y_pred, average='weighted')
+print(f"Precision: {precision}")
+```
+
+Dans ce code, recall_score et precision_score sont utilisés pour évaluer le rappel et la précision en considérant les vraies étiquettes (y_test) et les prédictions du modèle (y_pred). L'argument average='weighted' spécifie l'utilisation de la moyenne pondérée pour traiter les cas où les classes ne sont pas équilibrées de la même manière. Vous pouvez ajuster l'argument average en fonction de vos besoins spécifiques.
+
+![Rappel et de la Précision](chemin/vers/votre/image.png)
+
+
+
+
+
+
+
 
 
 ## Encadrant
