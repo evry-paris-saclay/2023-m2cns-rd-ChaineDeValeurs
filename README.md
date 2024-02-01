@@ -132,6 +132,37 @@ Ces étapes devraient vous permettre de configurer l'environnement nécessaire p
 
 ## Tests et Analyses de Performance
 [Décrivez les tests effectués sur le système, y compris les KPIs (Key Performance Indicators). Discutez de la robustesse, de la précision, des performances, etc.]
+
+## Tests et Analyses de Performance
+
+### Suivi de l'Entraînement du Modèle
+
+Pendant l'entraînement du modèle, nous surveillons les performances en termes de précision et de perte. Nous utilisons la bibliothèque matplotlib pour visualiser ces métriques au fil des époques. Voici comment le faire dans votre code Python :
+
+```python
+# Tracé de la courbe d'entraînement de la précision
+plt.plot(history.history['accuracy'], label='Train Accuracy')
+plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.ylim([0, 1])
+plt.legend(loc='lower right')
+plt.show()
+
+# Tracé de la courbe d'entraînement de la perte
+plt.plot(history.history['loss'], label='Train Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend(loc='upper right')
+plt.show()
+```
+Ces courbes permettent de visualiser la progression de la précision et de la perte pendant l'entraînement du modèle.
+
+git add chemin/vers/votre/image.png
+
+
+
 ## Encadrant
 - Hamidi Massinissa
 ## Auteurs
