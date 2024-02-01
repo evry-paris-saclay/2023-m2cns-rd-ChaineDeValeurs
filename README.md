@@ -8,6 +8,7 @@ Les quantités de produits plastiques utilisés dans les activités de santé, t
 
 La première étape consiste à mener une étude sur les domaines où les technologies de l'Internet des Objets (IoT) pourraient améliorer la manipulation des produits liés à la santé. Cela inclut des aspects tels que la gestion des stocks, les conteneurs de déchets intelligents, la gestion des déchets et la surveillance des conditions de stérilisation des équipements. Ensuite, nous somme chargé de concevoir et de mettre en œuvre une solution concrète basée sur des dispositifs connectés qui répond à l'un des domaines identifiés.
 
+### Le flux de notre systeme ci-dessous:
 ```mermaid
 graph TD;
     camera-->node.RED;
