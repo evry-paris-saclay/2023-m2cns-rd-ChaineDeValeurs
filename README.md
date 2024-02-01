@@ -242,7 +242,7 @@ print(f"Precision: {precision}")
 
 Dans ce code, recall_score et precision_score sont utilisés pour évaluer le rappel et la précision en considérant les vraies étiquettes (y_test) et les prédictions du modèle (y_pred). L'argument average='weighted' spécifie l'utilisation de la moyenne pondérée pour traiter les cas où les classes ne sont pas équilibrées de la même manière. Vous pouvez ajuster l'argument average en fonction de vos besoins spécifiques.
 
-![Rappel et de la Précision](chemin/vers/votre/image.png)
+![Rappel et Précision](chemin/vers/votre/image.png)
 
 ### F1 Score
 
