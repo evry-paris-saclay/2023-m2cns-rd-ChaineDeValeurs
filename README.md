@@ -11,7 +11,7 @@ La première étape consiste à mener une étude sur les domaines où les techno
 ### Le flux de notre systeme ci-dessous:
 ```mermaid
 flowchart LR;
-    camera-->node.RED;
+    camera-->c{node.RED};
     node.RED-->ESP_1;
     ESP_1-->Servo_1;
     ESP_1-->Servo_2;
