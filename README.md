@@ -73,7 +73,7 @@ Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordina
 ### Prérequis
 - Assurez-vous d'avoir Python 3.x installé sur votre machine.
 - Installez la bibliothèque tensorflow à l'aide de la commande suivante :
-    'pip install tensorflow'
+    ```pip install tensorflow```
 
 ### Configuration de l'environnement de développement
 - Clonez ce dépôt :
