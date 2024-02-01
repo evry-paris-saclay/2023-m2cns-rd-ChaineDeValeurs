@@ -1,0 +1,730 @@
+[
+    {
+        "id": "ddfb3b1fa8198548",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "cf77da62075423d8",
+        "type": "comment",
+        "z": "ddfb3b1fa8198548",
+        "name": "WARNING: please check you have started this container with a volume that is mounted to /data\\n otherwise any flow changes are lost when you redeploy or upgrade the container\\n (e.g. upgrade to a more recent node-red docker image).\\n  If you are using named volumes you can ignore this warning.\\n Double click or see info side panel to learn how to start Node-RED in Docker to save your work",
+        "info": "\nTo start docker with a bind mount volume (-v option), for example:\n\n```\ndocker run -it -p 1880:1880 -v /home/user/node_red_data:/data --name mynodered nodered/node-red\n```\n\nwhere `/home/user/node_red_data` is a directory on your host machine where you want to store your flows.\n\nIf you do not do this then you can experiment and redploy flows, but if you restart or upgrade the container the flows will be disconnected and lost. \n\nThey will still exist in a hidden data volume, which can be recovered using standard docker techniques, but that is much more complex than just starting with a named volume as described above.",
+        "x": 350,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "7a6b2b0b7532aedc",
+        "type": "inject",
+        "z": "ddfb3b1fa8198548",
+        "name": "start system",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 124,
+        "y": 373,
+        "wires": [
+            [
+                "45cc0390bfb52589"
+            ]
+        ]
+    },
+    {
+        "id": "45cc0390bfb52589",
+        "type": "ui_button",
+        "z": "ddfb3b1fa8198548",
+        "name": "",
+        "group": "675036dd.603328",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "take a picture",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 214,
+        "y": 493,
+        "wires": [
+            [
+                "bcbc1368743bc872"
+            ]
+        ]
+    },
+    {
+        "id": "bcbc1368743bc872",
+        "type": "exec",
+        "z": "ddfb3b1fa8198548",
+        "command": "ffmpeg  -y -i \"http://192.168.100.24:8080/video\" -vframes 1  /data/1.jpg",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Decode RTSP stream 2",
+        "x": 390,
+        "y": 360,
+        "wires": [
+            [
+                "b45ef0b3c9ee2b7f"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b45ef0b3c9ee2b7f",
+        "type": "file in",
+        "z": "ddfb3b1fa8198548",
+        "name": "",
+        "filename": "/data/1.jpg",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 490,
+        "y": 500,
+        "wires": [
+            [
+                "7cc93081b4daf63b",
+                "31e337c291aeaf0b"
+            ]
+        ]
+    },
+    {
+        "id": "7cc93081b4daf63b",
+        "type": "image",
+        "z": "ddfb3b1fa8198548",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 680,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "ad9a51fa0b81d3a9",
+        "type": "switch",
+        "z": "ddfb3b1fa8198548",
+        "name": "test class",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "seringe",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "gauze",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "tube",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 980,
+        "y": 500,
+        "wires": [
+            [
+                "b0f1441451e16ca9"
+            ],
+            [
+                "f32ce03f66db5ade"
+            ],
+            [
+                "29c4e12d04714fbe"
+            ]
+        ]
+    },
+    {
+        "id": "d6e9a839c8e661be",
+        "type": "mqtt out",
+        "z": "ddfb3b1fa8198548",
+        "name": "aiguillage position 1",
+        "topic": "ESP_1/aiguillage",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ed01ad7ba6632cd1",
+        "x": 1380,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "f4956a58efce2274",
+        "type": "mqtt out",
+        "z": "ddfb3b1fa8198548",
+        "name": "aiguillage position 2",
+        "topic": "ESP_1/aiguillage",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ed01ad7ba6632cd1",
+        "x": 1380,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "cbd6651cdb5c4807",
+        "type": "mqtt out",
+        "z": "ddfb3b1fa8198548",
+        "name": "aiguillage position 3",
+        "topic": "ESP_1/aiguillage",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ed01ad7ba6632cd1",
+        "x": 1380,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "3162d065e24b8a14",
+        "type": "mqtt in",
+        "z": "ddfb3b1fa8198548",
+        "name": "reception de confirmation",
+        "topic": "ESP_1/confirmation",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "ed01ad7ba6632cd1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 364.4444580078125,
+        "y": 813.3333854675293,
+        "wires": [
+            [
+                "5c5e8ecb2c7c185d",
+                "31578d95b8ab268f"
+            ]
+        ]
+    },
+    {
+        "id": "5c5e8ecb2c7c185d",
+        "type": "switch",
+        "z": "ddfb3b1fa8198548",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 574.4444580078125,
+        "y": 813.3333854675293,
+        "wires": [
+            [
+                "d60e830b1e61f8a5"
+            ]
+        ]
+    },
+    {
+        "id": "d60e830b1e61f8a5",
+        "type": "mqtt out",
+        "z": "ddfb3b1fa8198548",
+        "name": "",
+        "topic": "ESP_2/chute",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ed01ad7ba6632cd1",
+        "x": 744.4444580078125,
+        "y": 813.3333854675293,
+        "wires": []
+    },
+    {
+        "id": "aa1d896946d81b34",
+        "type": "mqtt in",
+        "z": "ddfb3b1fa8198548",
+        "name": "emuler reception",
+        "topic": "ESP_3/reception",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ed01ad7ba6632cd1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 347.7777633666992,
+        "y": 1075.5555400848389,
+        "wires": [
+            [
+                "a3882a329b221e2d"
+            ]
+        ]
+    },
+    {
+        "id": "31e337c291aeaf0b",
+        "type": "teachable machine",
+        "z": "ddfb3b1fa8198548",
+        "name": "",
+        "mode": "online",
+        "modelUri": "https://teachablemachine.withgoogle.com/models/SR9xFL_7J/",
+        "localModel": "teachable_model",
+        "output": "best",
+        "activeThreshold": false,
+        "threshold": 80,
+        "activeMaxResults": false,
+        "maxResults": 3,
+        "passThrough": false,
+        "x": 730,
+        "y": 500,
+        "wires": [
+            [
+                "ad9a51fa0b81d3a9"
+            ]
+        ]
+    },
+    {
+        "id": "f32ce03f66db5ade",
+        "type": "function",
+        "z": "ddfb3b1fa8198548",
+        "name": "function 2",
+        "func": "// Créer un objet message avec le payload 0\nvar msg = {\n    payload: 1\n};\n\n// Renvoyer le message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 500,
+        "wires": [
+            [
+                "f4956a58efce2274"
+            ]
+        ]
+    },
+    {
+        "id": "29c4e12d04714fbe",
+        "type": "function",
+        "z": "ddfb3b1fa8198548",
+        "name": "function 3",
+        "func": "// Créer un objet message avec le payload 0\nvar msg = {\n    payload: 2\n};\n\n// Renvoyer le message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 580,
+        "wires": [
+            [
+                "cbd6651cdb5c4807"
+            ]
+        ]
+    },
+    {
+        "id": "2940b44077b241a1",
+        "type": "debug",
+        "z": "ddfb3b1fa8198548",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1597.7777786254883,
+        "y": 331.11112213134766,
+        "wires": []
+    },
+    {
+        "id": "d9facc4936455aff",
+        "type": "mqtt in",
+        "z": "ddfb3b1fa8198548",
+        "name": "",
+        "topic": "ESP_1/aiguillage",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ed01ad7ba6632cd1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1377.7777786254883,
+        "y": 331.11112213134766,
+        "wires": [
+            [
+                "2940b44077b241a1"
+            ]
+        ]
+    },
+    {
+        "id": "a3882a329b221e2d",
+        "type": "debug",
+        "z": "ddfb3b1fa8198548",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 587.7777633666992,
+        "y": 1075.5555400848389,
+        "wires": []
+    },
+    {
+        "id": "0195e51a76133e25",
+        "type": "inject",
+        "z": "ddfb3b1fa8198548",
+        "name": "Test 0",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 890,
+        "y": 420,
+        "wires": [
+            [
+                "b0f1441451e16ca9"
+            ]
+        ]
+    },
+    {
+        "id": "b0f1441451e16ca9",
+        "type": "function",
+        "z": "ddfb3b1fa8198548",
+        "name": "function 4",
+        "func": "// Créer un objet message avec le payload 0\nvar msg = {\n    payload: 0\n};\n\n// Renvoyer le message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 420,
+        "wires": [
+            [
+                "d6e9a839c8e661be"
+            ]
+        ]
+    },
+    {
+        "id": "ca2f791dc2a105e6",
+        "type": "inject",
+        "z": "ddfb3b1fa8198548",
+        "name": "Test 1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 870,
+        "y": 580,
+        "wires": [
+            [
+                "f32ce03f66db5ade"
+            ]
+        ]
+    },
+    {
+        "id": "dee1e07b5dece07d",
+        "type": "inject",
+        "z": "ddfb3b1fa8198548",
+        "name": "Test 2",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 870,
+        "y": 640,
+        "wires": [
+            [
+                "29c4e12d04714fbe"
+            ]
+        ]
+    },
+    {
+        "id": "cb19e9aaa65a87cb",
+        "type": "inject",
+        "z": "ddfb3b1fa8198548",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 88.88888549804688,
+        "y": 896.6666879653931,
+        "wires": [
+            [
+                "1b88b84de870224d"
+            ]
+        ]
+    },
+    {
+        "id": "1b88b84de870224d",
+        "type": "mqtt out",
+        "z": "ddfb3b1fa8198548",
+        "name": "emuler confirmation",
+        "topic": "ESP_1/confirmation",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ed01ad7ba6632cd1",
+        "x": 361.1111297607422,
+        "y": 896.6667032241821,
+        "wires": []
+    },
+    {
+        "id": "628a329ee0e48804",
+        "type": "inject",
+        "z": "ddfb3b1fa8198548",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 90,
+        "y": 1000,
+        "wires": [
+            [
+                "78fb88b97d739d4f"
+            ]
+        ]
+    },
+    {
+        "id": "78fb88b97d739d4f",
+        "type": "mqtt out",
+        "z": "ddfb3b1fa8198548",
+        "name": "emuler reception",
+        "topic": "ESP_3/reception",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ed01ad7ba6632cd1",
+        "x": 350,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "96abe324567be45b",
+        "type": "debug",
+        "z": "ddfb3b1fa8198548",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 982.2222213745117,
+        "y": 880.0000553131104,
+        "wires": []
+    },
+    {
+        "id": "14ce01a987f11e06",
+        "type": "mqtt in",
+        "z": "ddfb3b1fa8198548",
+        "name": "emuler chute",
+        "topic": "ESP_2/chute",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "ed01ad7ba6632cd1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 752.2221984863281,
+        "y": 878.8889198303223,
+        "wires": [
+            [
+                "96abe324567be45b"
+            ]
+        ]
+    },
+    {
+        "id": "31578d95b8ab268f",
+        "type": "debug",
+        "z": "ddfb3b1fa8198548",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 594.4444580078125,
+        "y": 733.3333854675293,
+        "wires": []
+    },
+    {
+        "id": "675036dd.603328",
+        "type": "ui_group",
+        "name": "Frame Grab",
+        "tab": "7af2d9c8.0a9148",
+        "order": 1,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "ed01ad7ba6632cd1",
+        "type": "mqtt-broker",
+        "name": "mosquitolocal",
+        "broker": "192.168.100.25",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "7af2d9c8.0a9148",
+        "type": "ui_tab",
+        "name": "NVR",
+        "icon": "dashboard",
+        "order": 13
+    }
+]
