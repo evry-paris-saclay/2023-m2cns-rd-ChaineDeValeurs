@@ -179,6 +179,42 @@ Ces courbes permettent de visualiser la progression de la précision et de la pe
 ![Courbe d'entraînement](chemin/vers/votre/image.png)
 
 
+# Projet de Recherche: Classification d'Images Médicales
+
+## Machine Learning
+
+### Affichage de la Matrice de Confusion
+
+Pour évaluer les performances du modèle, nous utilisons la matrice de confusion, qui montre le nombre de vrais positifs, de vrais négatifs, de faux positifs et de faux négatifs. Vous pouvez afficher la matrice de confusion en utilisant le code suivant dans votre script Python ou Jupyter Notebook :
+
+```python
+from sklearn.metrics import confusion_matrix
+import seaborn as sns
+
+# Évaluation du modèle
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print(f"Test Accuracy: {test_acc}")
+
+# Obtenez les probabilités des classes pour chaque échantillon de test
+y_probs = model.predict(x_test)
+
+# Obtenez les classes prédites en choisissant l'indice avec la probabilité la plus élevée
+y_pred = np.argmax(y_probs, axis=1)
+
+# Calcul de la matrice de confusion
+conf_matrix = confusion_matrix(y_test, y_pred)
+
+# Tracé de la matrice de confusion avec seaborn
+plt.figure(figsize=(8, 6))
+sns.heatmap(conf_matrix, annot=True, fmt='g', cmap='Blues', xticklabels=classes, yticklabels=classes)
+plt.xlabel('Predicted labels')
+plt.ylabel('True labels')
+plt.title('Confusion Matrix')
+plt.show()
+```
+Assurez-vous d'avoir installé Seaborn en exécutant pip install seaborn si vous ne l'avez pas déjà fait.
+
+
 
 ## Encadrant
 - Hamidi Massinissa
