@@ -77,10 +77,10 @@ Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordina
 
 ### Configuration de l'environnement de développement
 - Clonez ce dépôt :
-    git clone https://github.com/evry-paris-saclay/2023-m2cns-rd-ChaineDeValeurs.git
+    ```git clone https://github.com/evry-paris-saclay/2023-m2cns-rd-ChaineDeValeurs.git```
 
 - Ouvrez le fichier Jupyter Notebook ou le script Python dans votre environnement de développement, par exemple :
-    jupyter notebook mon_notebook.ipynb
+    ```jupyter notebook mon_notebook.ipynb```
 
 - Modifiez le répertoire de données (data_dir) dans le script pour refléter le chemin vers votre jeu de données médicales.
 
