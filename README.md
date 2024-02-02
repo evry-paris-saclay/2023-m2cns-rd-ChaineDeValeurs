@@ -165,6 +165,10 @@ Pour configurer les nœuds Node-RED pour une utilisation avec MQTT, veuillez sui
 
 Veillez à consulter la documentation de Node-RED et de MQTT pour des instructions spécifiques à votre environnement et à vos cas d'utilisation.
 
+7. pour surveiller les echange MTTQ nous avons utiliser MTTQ Explorer 
+
+![MTTQ EXplorer](/Src/Images/MTTQ%20EXPLORER.png)
+
 ## Arduino
 
 ### Instructions d'installation du code Arduino
