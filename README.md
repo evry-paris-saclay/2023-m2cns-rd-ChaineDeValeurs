@@ -446,8 +446,52 @@ Dans ce code, vous itérez sur chaque classe, calculez les valeurs de faux posit
 ![Courbes ROC-AUC](Src/Images/CourbesROC-AUC.png)
 
 
+## Dataset
 
+This dataset was obtained as part of the Medical Waste Treating 4.0 project, funded by the Tuscany Region. The primary purpose of the dataset is to serve as a valuable resource for developing and testing computer vision methods for the initial sorting of medical waste.
 
+### Acquisition Details
+
+The dataset was captured using an OAK-D camera with the following technical specifications, which can be found [here](https://docs.luxonis.com/projects/hardware/en/latest/pages/BW1098OAK.html).
+
+### Sample Structure
+
+Each sample in the dataset comprises three images:
+
+- RGB Image: 1920 x 1080 resolution
+- Right Image (Stereo Pair): 640 x 400 grayscale
+- Left Image (Stereo Pair): 640 x 400 grayscale
+
+Example filenames:
+- `timestamp.jpg`: RGB Image
+- `timestamp_r.png`: Right image in the stereo pair
+- `timestamp_l.png`: Left image in the stereo pair
+
+### Categories
+
+The dataset includes the following categories of medical waste:
+
+- gauze
+- glove pair latex
+- glove pair nitrile
+- glove pair surgery
+- glove single latex
+- glove single nitrile
+- glove single surgery
+- medical cap
+- medical glasses
+- shoe cover pair
+- shoe cover single
+- test tube
+- urine bag
+
+### Attribution
+
+The dataset is made available under the Creative Commons Attribution 4.0 International License.
+
+- Dataset Citation: Bruno, A., Martinelli, M., & Moroni, D. (2022). Medical-Waste-4.0-Dataset: v0.1 (v0.1) [Data set]. Zenodo. [https://doi.org/10.5281/zenodo.7643417](https://doi.org/10.5281/zenodo.7643417).
+
+Please cite the dataset appropriately if you use it in your work.
 
 
 
