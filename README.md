@@ -31,7 +31,57 @@ flowchart TD;
 Pour plus de détails, veuillez consulter le [rapport](./Src/Docs/Rapport_V0.pdf) et la [présentation](./Src/Docs/Presentation_V0.pdf).
 
 ## Installation et Configuration
-[Expliquez comment installer et configurer votre solution technique. Vous pouvez faire référence à des readme.md spécifiques dans les sous-dossiers pour plus de détails.]
+### Installation de Node-RED avec Docker
+
+Ce guide explique comment installer Node-RED en utilisant Docker et comment ajouter des bibliothèques supplémentaires à Node-RED.
+
+### Prérequis
+
+- Docker Desktop doit être installé sur votre système. Vous pouvez télécharger Docker Desktop depuis leur [site officiel](https://www.docker.com/products/docker-desktop).
+
+### Installation de Node-RED
+
+1. Ouvrez une fenêtre de terminal ou une invite de commande.
+
+2. Exécutez la commande suivante pour démarrer Node-RED dans un conteneur Docker :
+```
+docker run -v /chemin/vers/mon/repertoire:/data -p 1880:1880 nodered/node-red
+```
+
+Cette commande Docker est utilisée pour exécuter Node-RED dans un conteneur Docker tout en montant un volume pour enregistrer les données dans un répertoire spécifié sur votre système hôte. Voici une explication détaillée :
+
+- docker run: Cette commande est utilisée pour exécuter un conteneur Docker.
+- -v /chemin/vers/mon/repertoire:/data: Cet argument monte un volume en reliant un répertoire sur votre système hôte (le répertoire de votre choix, tel que /chemin/vers/mon/repertoire) à un répertoire dans le conteneur Docker (ici, /data). 
+Cela permet à Node-RED d'accéder et d'enregistrer des données dans le répertoire spécifié sur votre système hôte.
+- -p 1880:1880: Cet argument expose le port 1880 de Node-RED dans le conteneur Docker sur le port 1880 de votre machine hôte, permettant ainsi d'accéder à l'interface utilisateur de Node-RED depuis votre navigateur web.
+- nodered/node-red: C'est l'image Docker officielle de Node-RED que vous souhaitez exécuter dans votre conteneur Docker.
+
+3. Ouvrez votre navigateur web et accédez à l'adresse http://localhost:1880 pour accéder à l'interface utilisateur de Node-RED.
+
+### Ajout de bibliothèques à Node-RED
+
+Une fois que Node-RED est en cours d'exécution, vous pouvez ajouter des bibliothèques supplémentaires à l'aide de l'interface de gestion des paquets de Node-RED.
+
+1. Dans votre navigateur web, accédez à l'adresse http://localhost:1880.
+
+2. Cliquez sur l'icône de menu en haut à droite de la fenêtre, puis sélectionnez "Manage palette".
+
+3. Dans l'onglet "Install", vous pouvez rechercher les bibliothèques supplémentaires à installer. Pour chaque bibliothèque mentionnée dans ce guide, recherchez son nom et cliquez sur "Install".
+
+4. Une fois l'installation terminée, redémarrez Node-RED pour que les changements prennent effet.
+
+### Bibliothèques à installer
+
+Assurez-vous d'installer les bibliothèques suivantes à l'aide de l'interface de gestion des paquets de Node-RED :
+
+- node-red-contrib-browser-utils (version 0.0.11)
+- node-red-contrib-image-output (version 0.6.4)
+- node-red-contrib-image-tools (version 2.0.4)
+- node-red-contrib-teachable-machine (version 1.4.1)
+- node-red-contrib-tf-function (version 0.1.1)
+- node-red-contrib-tf-model (version 0.1.12)
+- node-red-contrib-ui-button_state (version 0.2.2)
+- node-red-dashboard
 
 ## Arduino
 
