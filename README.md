@@ -93,6 +93,46 @@ Assurez-vous d'installer les bibliothèques suivantes à l'aide de l'interface d
 - node-red-contrib-ui-button_state (version 0.2.2)
 - node-red-dashboard
 
+## Installation de Mosquitto sur Windows
+
+### Téléchargement de l'installateur
+
+1. Téléchargez l'installateur de Mosquitto depuis [le site officiel de Mosquitto](https://mosquitto.org/download/).
+
+### Installation de Mosquitto
+
+1. Exécutez l'installateur téléchargé en double-cliquant sur le fichier téléchargé.
+
+2. Suivez les instructions à l'écran pour installer Mosquitto sur votre système (recommendation installez mosquitto sur un autre disque que le c:).
+
+3. modifier le fichier mosquitto.conf comme suit pour une utilisation simplifier 
+```
+# Paramètres généraux
+pid_file mosquitto.pid
+persistence true
+persistence_location mosquitto.db
+log_dest file C:\Program Files\mosquitto\mosquitto.log
+
+# Définition du listener
+listener 1883
+
+# Autoriser les connexions anonymes
+allow_anonymous true
+```
+
+### Lancement de Mosquitto
+
+1. Après l'installation, ouvrez un terminal ou une invite de commande.
+
+2. Exécutez la commande suivante pour démarrer le service Mosquitto :
+```
+net start mosquitto
+```
+3.
+4. Mosquitto sera maintenant en cours d'exécution sur votre système.
+
+
+
 ## Arduino
 
 ### Instructions d'installation du code Arduino
