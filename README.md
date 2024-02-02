@@ -75,11 +75,14 @@ Une fois que Node-RED est en cours d'exécution, vous pouvez ajouter des bibliot
 1. Dans votre navigateur web, accédez à l'adresse http://localhost:1880.
 
 2. Cliquez sur l'icône de menu en haut à droite de la fenêtre, puis sélectionnez "Manage palette".
+
 ![manage](/Src/Images/palette.png)
 
-3. Dans l'onglet "Install", vous pouvez rechercher les bibliothèques supplémentaires à installer. Pour chaque bibliothèque mentionnée dans ce guide, recherchez son nom et cliquez sur "Install".
+4. Dans l'onglet "Install", vous pouvez rechercher les bibliothèques supplémentaires à installer. Pour chaque bibliothèque mentionnée dans ce guide, recherchez son nom et cliquez sur "Install".
+5. 
 ![install](/Src/Images/installer.png)
-4. Une fois l'installation terminée, redémarrez Node-RED pour que les changements prennent effet.
+
+6. Une fois l'installation terminée, redémarrez Node-RED pour que les changements prennent effet.
 
 ### Bibliothèques à installer
 
@@ -214,6 +217,8 @@ Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordina
 
 ![Flow Node](/Src/Images/flow%20Node.jpg)
 
+
+![Simulation du Flux](/Src/Images/simulation%20de%20fonctionement.png)
 
 ### Machine Learning
 ## Instructions pour la mise en place de l'environnement ML
@@ -446,6 +451,52 @@ Dans ce code, vous itérez sur chaque classe, calculez les valeurs de faux posit
 ![Courbes ROC-AUC](Src/Images/CourbesROC-AUC.png)
 
 
+## Dataset
+
+Ce dataset a été obtenu dans le cadre du projet Medical Waste Treating 4.0, financé par la région de Toscane. L'objectif principal de ce jeu de données est de servir de ressource précieuse pour le développement et le test de méthodes de vision par ordinateur pour le tri initial des déchets médicaux.
+
+### Détails de l'acquisition
+
+Le jeu de données a été capturé à l'aide d'une caméra OAK-D avec les spécifications techniques disponibles [ici](https://docs.luxonis.com/projects/hardware/en/latest/pages/BW1098OAK.html).
+
+### Structure des échantillons
+
+Chaque échantillon du jeu de données est composé de trois images :
+
+- Image RVB : Résolution de 1920 x 1080
+- Image de droite (Paire stéréo) : 640 x 400 en niveaux de gris
+- Image de gauche (Paire stéréo) : 640 x 400 en niveaux de gris
+
+Exemples de noms de fichiers :
+- `timestamp.jpg` : Image RVB
+- `timestamp_r.png` : Image de droite de la paire stéréo
+- `timestamp_l.png` : Image de gauche de la paire stéréo
+
+### Catégories
+
+Le jeu de données comprend les catégories de déchets médicaux suivantes :
+
+- gaze
+- paire de gants en latex
+- paire de gants en nitrile
+- paire de gants chirurgicaux
+- gant unique en latex
+- gant unique en nitrile
+- gant unique chirurgical
+- calotte médicale
+- lunettes médicales
+- paire de couvre-chaussures
+- couvre-chaussure unique
+- tube à essai
+- sac d'urine
+
+### Attribution
+
+Le jeu de données est mis à disposition sous la licence Creative Commons Attribution 4.0 International.
+
+- Citation du jeu de données : Bruno, A., Martinelli, M., & Moroni, D. (2022). Medical-Waste-4.0-Dataset : v0.1 (v0.1) [Data set]. Zenodo. [https://doi.org/10.5281/zenodo.7643417](https://doi.org/10.5281/zenodo.7643417).
+
+Veuillez citer le jeu de données de manière appropriée si vous l'utilisez dans votre travail.
 
 
 
