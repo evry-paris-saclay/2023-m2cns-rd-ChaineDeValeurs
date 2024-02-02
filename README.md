@@ -198,7 +198,7 @@ Ces étapes devraient vous permettre de configurer l'environnement nécessaire p
 Dans cette démonstration, après le chargement de notre modèle, nous lui avons présenté une image représentant un tube à essai, et le modèle a réussi à la reconnaître avec succès.
 ### Image fournie
 ![Courbe d'entraînement](Src/Images/testTub.jpg)
-### reponse du modele 
+### Reponse du modele 
 ![Courbe d'entraînement](Src/Images/Prediction.png)
 
 ## Tests et Analyses de Performance
