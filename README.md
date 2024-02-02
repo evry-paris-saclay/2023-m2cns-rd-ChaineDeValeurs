@@ -260,7 +260,7 @@ plt.ylabel('True labels')
 plt.title('Confusion Matrix')
 plt.show()
 ```
-Assurez-vous d'avoir installé Seaborn en exécutant pip install seaborn si vous ne l'avez pas déjà fait.
+Assurez-vous d'avoir installé Seaborn en exécutant `pip install seaborn` si vous ne l'avez pas déjà fait.
 
 ![Matrice de Confusion](Src/Images/MatriceDeConfusion.png)
 
