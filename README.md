@@ -8,6 +8,15 @@ Les quantités de produits plastiques utilisés dans les activités de santé, t
 
 La première étape consiste à mener une étude sur les domaines où les technologies de l'Internet des Objets (IoT) pourraient améliorer la manipulation des produits liés à la santé. Cela inclut des aspects tels que la gestion des stocks, les conteneurs de déchets intelligents, la gestion des déchets et la surveillance des conditions de stérilisation des équipements. Ensuite, nous somme chargé de concevoir et de mettre en œuvre une solution concrète basée sur des dispositifs connectés qui répond à l'un des domaines identifiés.
 
+## Fonctionnement Système de Tri Automatisé des Déchets
+
+
+Lorsque notre système est activé, une photo est capturée depuis une caméra IP que nous avons intégrée. Ensuite, notre modèle d'intelligence artificielle analyse cette photo et lui attribue une classe correspondant à l'objet détecté. En fonction de la classe attribuée, un signal est envoyé à l'ESP 2, un microcontrôleur, qui se charge de positionner l'aiguillage approprié pour diriger le déchet vers le bon conteneur. Une fois l'aiguillage correctement positionné, un signal de confirmation est renvoyé à notre plateforme centrale.
+
+Cette plateforme, à son tour, envoie un signal à l'ESP 1 pour déclencher la chute du déchet dans le conteneur correspondant situé tout en bas. Pendant tout ce processus, notre ESP 3 est activement impliqué. Il est équipé d'un capteur à ultrasons qui surveille en permanence le niveau des déchets dans les différents conteneurs. Dès qu'un changement significatif est détecté, un signal est envoyé à la plateforme centrale pour confirmer l'arrivée du déchet.
+
+Ce système assure un tri efficace et automatisé des déchets, minimisant ainsi les interventions humaines tout en garantissant une gestion optimale des déchets.
+
 ### Le flux de notre systeme ci-dessous:
 ```mermaid
 flowchart TD;
@@ -38,6 +47,7 @@ Ce guide explique comment installer Node-RED en utilisant Docker et comment ajou
 ### Prérequis
 
 - Docker Desktop doit être installé sur votre système. Vous pouvez télécharger Docker Desktop depuis leur [site officiel](https://www.docker.com/products/docker-desktop).
+- un server MTTQ type mosquitto
 
 ### Installation de Node-RED
 
@@ -83,6 +93,50 @@ Assurez-vous d'installer les bibliothèques suivantes à l'aide de l'interface d
 - node-red-contrib-tf-model (version 0.1.12)
 - node-red-contrib-ui-button_state (version 0.2.2)
 - node-red-dashboard
+
+### Installation de Mosquitto sur Windows
+
+#### Téléchargement de l'installateur
+
+1. Téléchargez l'installateur de Mosquitto depuis [le site officiel de Mosquitto](https://mosquitto.org/download/).
+
+#### Installation de Mosquitto
+
+1. Exécutez l'installateur téléchargé en double-cliquant sur le fichier téléchargé.
+
+2. Suivez les instructions à l'écran pour installer Mosquitto sur votre système il est recommedé d'installer sur un autre disque que le C: pour pouvoir modifier le fichier mosquitto.conf.
+
+3.modifier le fichier mosquitto.conf comme suit:
+```
+# Paramètres généraux
+pid_file mosquitto.pid
+persistence true
+persistence_location mosquitto.db
+log_dest file C:\Program Files\mosquitto\mosquitto.log
+
+# Définition du listener
+listener 1883
+
+# Autoriser les connexions anonymes
+allow_anonymous true
+
+```
+
+#### Lancement de Mosquitto
+
+1. Après l'installation, ouvrez un terminal ou une invite de commande.
+
+2. Exécutez la commande suivante pour démarrer le service Mosquitto :
+
+```
+net start mosquitto
+```
+
+3. Mosquitto sera maintenant en cours d'exécution sur votre système.
+
+
+
+
 
 ### Configuration des nœuds Node-RED avec MQTT
 
@@ -157,6 +211,7 @@ Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordina
 -    Traitement Final des Déchets : Le réceptacle final est équipé d'un capteur ultrasonique qui détecte le passage du déchet. Lorsque le déchet est détecté, l'ESP3 envoie un signal à la plateforme via Node-RED, indiquant que le déchet a été traité avec succès.
 
 ![Flow Node](/Src/Images/flow%20Node.jpg)
+
 
 ### Machine Learning
 ## Instructions pour la mise en place de l'environnement ML
