@@ -133,7 +133,7 @@ Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordina
 
 -    Traitement Final des Déchets : Le réceptacle final est équipé d'un capteur ultrasonique qui détecte le passage du déchet. Lorsque le déchet est détecté, l'ESP3 envoie un signal à la plateforme via Node-RED, indiquant que le déchet a été traité avec succès.
 
-
+![Flow Node](/Src/Images/flow%20Node.jpg)
 
 ### Machine Learning
 ## Instructions pour la mise en place de l'environnement ML
