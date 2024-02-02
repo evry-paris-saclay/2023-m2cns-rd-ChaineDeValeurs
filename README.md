@@ -39,6 +39,45 @@ Ce guide explique comment installer Node-RED en utilisant Docker et comment ajou
 
 - Docker Desktop doit être installé sur votre système. Vous pouvez télécharger Docker Desktop depuis leur [site officiel](https://www.docker.com/products/docker-desktop).
 
+- Mosquitto MTTQ server.
+
+### Installation de Mosquitto sur Windows
+
+#### Téléchargement de l'installateur
+
+1. Téléchargez l'installateur de Mosquitto depuis [le site officiel de Mosquitto](https://mosquitto.org/download/).
+
+#### Installation de Mosquitto
+
+1. Exécutez l'installateur téléchargé en double-cliquant sur le fichier téléchargé.
+
+2. Suivez les instructions à l'écran pour installer Mosquitto sur votre système (recommendation installez mosquitto sur un autre disque que le c:).
+
+3. modifier le fichier mosquitto.conf comme suit pour une utilisation simplifier 
+```
+# Paramètres généraux
+pid_file mosquitto.pid
+persistence true
+persistence_location mosquitto.db
+log_dest file C:\Program Files\mosquitto\mosquitto.log
+
+# Définition du listener
+listener 1883
+
+# Autoriser les connexions anonymes
+allow_anonymous true
+```
+
+#### Lancement de Mosquitto
+
+1. Après l'installation, ouvrez un terminal ou une invite de commande.
+
+2. Exécutez la commande suivante pour démarrer le service Mosquitto :
+```
+net start mosquitto
+```
+3. Mosquitto sera maintenant en cours d'exécution sur votre système.
+
 ### Installation de Node-RED
 
 1. Ouvrez une fenêtre de terminal ou une invite de commande.
@@ -70,9 +109,19 @@ Une fois que Node-RED est en cours d'exécution, vous pouvez ajouter des bibliot
 
 4. Une fois l'installation terminée, redémarrez Node-RED pour que les changements prennent effet.
 
+Pour importer un fichier JSON associé à votre projet, vous pouvez suivre ces étapes :
+![import.](/Src/Images/import.png)
+![importer.](/Src/Images/importer.png)
+1. Allez dans les paramètres de votre projet.
+2. Recherchez l'option ou l'onglet permettant d'importer des fichiers ou des données.
+3. Sélectionnez l'option d'importation de fichier.
+4. Choisissez le fichier JSON associé à votre projet depuis l'emplacement où il est stocké sur votre ordinateur.
+5. Suivez les instructions à l'écran pour terminer le processus d'importation.
+
 ### Bibliothèques à installer
 
 Assurez-vous d'installer les bibliothèques suivantes à l'aide de l'interface de gestion des paquets de Node-RED :
+![palette.](/Src/Images/palette.png)![install.](/Src/Images/installer.png)
 
 - node-red-contrib-browser-utils (version 0.0.11)
 - node-red-contrib-image-output (version 0.6.4)
@@ -82,6 +131,10 @@ Assurez-vous d'installer les bibliothèques suivantes à l'aide de l'interface d
 - node-red-contrib-tf-model (version 0.1.12)
 - node-red-contrib-ui-button_state (version 0.2.2)
 - node-red-dashboard
+
+
+
+
 
 ## Arduino
 
