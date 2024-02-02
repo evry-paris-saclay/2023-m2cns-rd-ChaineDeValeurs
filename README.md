@@ -115,7 +115,7 @@ Assurez-vous d'installer les bibliothèques suivantes à l'aide de l'interface d
 pid_file mosquitto.pid
 persistence true
 persistence_location mosquitto.db
-log_dest file C:\Program Files\mosquitto\mosquitto.log
+log_dest file D:\mosquitto\mosquitto.log
 
 # Définition du listener
 listener 1883
