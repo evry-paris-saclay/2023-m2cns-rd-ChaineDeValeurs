@@ -145,9 +145,11 @@ Pour configurer les nœuds Node-RED pour une utilisation avec MQTT, veuillez sui
 1. Ouvrez votre environnement Node-RED.
 
 ![Broker](/Src/Images/Broker%20Mttq.png)
+
 2. selectionner les nœuds MQTT a configurer.
 
 ![out](/Src/Images/exemple%20Mttq.png)
+
 3. Pour configurer un nœud MQTT de réception, double-cliquez sur le nœud , puis spécifiez les paramètres du broker MQTT auquel vous souhaitez vous connecter.
 
 ![in](/Src/Images/exemple%20mttq%20in.png)
