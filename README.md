@@ -37,7 +37,7 @@ flowchart TD;
 
 
 
-Pour plus de détails, veuillez consulter le [rapport](./Src/Docs/Rapport_V0.pdf) et la [présentation](./Src/Docs/Presentation_V0.pdf).
+Pour plus de détails, veuillez consulter le [rapport](./Docs/Rapport_V0.pdf) et la [présentation](./Docs/Presentation_V0.pdf).
 
 ## Installation et Configuration
 ### Installation de Node-RED avec Docker
