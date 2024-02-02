@@ -25,7 +25,7 @@ flowchart TD;
     ESP_3--confirmation-->c{node.RED};
 ```
 
-![Schéma explicatif](lien_vers_image_schema.png)
+
 
 
 Pour plus de détails, veuillez consulter le [rapport](./Src/Docs/Rapport_V0.pdf) et la [présentation](./Src/Docs/Presentation_V0.pdf).
@@ -83,6 +83,25 @@ Assurez-vous d'installer les bibliothèques suivantes à l'aide de l'interface d
 - node-red-contrib-ui-button_state (version 0.2.2)
 - node-red-dashboard
 
+### Configuration des nœuds Node-RED avec MQTT
+
+Pour configurer les nœuds Node-RED pour une utilisation avec MQTT, veuillez suivre ces étapes simples :
+
+1. Ouvrez votre environnement Node-RED.
+
+![Broker](/Src/Images/Broker%20Mttq.png.jpg)
+2. selectionner les nœuds MQTT a configurer.
+
+![out](/Src/Images/exemple%20Mttq.png)
+3. Pour configurer un nœud MQTT de réception, double-cliquez sur le nœud , puis spécifiez les paramètres du broker MQTT auquel vous souhaitez vous connecter.
+
+![in](/Src/Images/exemple%20mttq%20in.png)
+4. Pour configurer un nœud MQTT d'émission, suivez la même procédure et définissez les paramètres de publication, y compris le sujet (topic) sur lequel vous souhaitez publier.
+5. Assurez-vous de définir les autorisations et les paramètres de sécurité appropriés pour votre broker MQTT si nécessaire.
+6. Une fois la configuration terminée, déployez vos modifications pour les appliquer.
+
+Veillez à consulter la documentation de Node-RED et de MQTT pour des instructions spécifiques à votre environnement et à vos cas d'utilisation.
+
 ## Arduino
 
 ### Instructions d'installation du code Arduino
@@ -133,7 +152,7 @@ Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordina
 
 -    Traitement Final des Déchets : Le réceptacle final est équipé d'un capteur ultrasonique qui détecte le passage du déchet. Lorsque le déchet est détecté, l'ESP3 envoie un signal à la plateforme via Node-RED, indiquant que le déchet a été traité avec succès.
 
-
+![Flow Node](/Src/Images/flow%20Node.jpg)
 
 ### Machine Learning
 ## Instructions pour la mise en place de l'environnement ML
