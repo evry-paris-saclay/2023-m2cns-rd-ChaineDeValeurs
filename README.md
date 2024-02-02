@@ -190,6 +190,9 @@ Les détails spécifiques sur la configuration des branchements matériels seron
 
 Le code de chaque ESP sera fourni de manière générique, ce qui permettra aux utilisateurs de l'adapter en fonction de leur propre configuration matérielle et de leurs besoins spécifiques.
 
+### exemple de branchement sur l'ESP_2 
+
+![branchement ESP_2](/Src/Images/exemple%20branchement%20esp_2.jpg)
 ## Plateforme IoT avec Node-RED 
 
 Nous avons mis en place une plateforme IoT basée sur Node-RED pour centraliser et gérer notre projet de gestion des déchets de santé. Cette plateforme permet de coordonner les différentes étapes du processus, depuis la détection et la classification des déchets jusqu'à leur traitement final.
