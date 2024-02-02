@@ -81,6 +81,7 @@ Pour importer un fichier JSON associé à votre projet, vous pouvez suivre ces �
 ### Bibliothèques à installer
 
 Assurez-vous d'installer les bibliothèques suivantes à l'aide de l'interface de gestion des paquets de Node-RED :
+![palette.](/Src/Images/palette.png)
 
 - node-red-contrib-browser-utils (version 0.0.11)
 - node-red-contrib-image-output (version 0.6.4)
