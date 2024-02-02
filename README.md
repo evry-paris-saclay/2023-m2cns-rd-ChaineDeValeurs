@@ -215,6 +215,8 @@ Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordina
 ![Flow Node](/Src/Images/flow%20Node.jpg)
 
 
+![Simulation du Flux](/Src/Images/simulation%20de%20fonctionement.png)
+
 ### Machine Learning
 ## Instructions pour la mise en place de l'environnement ML
 
