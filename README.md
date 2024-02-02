@@ -75,11 +75,14 @@ Une fois que Node-RED est en cours d'exécution, vous pouvez ajouter des bibliot
 1. Dans votre navigateur web, accédez à l'adresse http://localhost:1880.
 
 2. Cliquez sur l'icône de menu en haut à droite de la fenêtre, puis sélectionnez "Manage palette".
+
 ![manage](/Src/Images/palette.png)
 
-3. Dans l'onglet "Install", vous pouvez rechercher les bibliothèques supplémentaires à installer. Pour chaque bibliothèque mentionnée dans ce guide, recherchez son nom et cliquez sur "Install".
+4. Dans l'onglet "Install", vous pouvez rechercher les bibliothèques supplémentaires à installer. Pour chaque bibliothèque mentionnée dans ce guide, recherchez son nom et cliquez sur "Install".
+5. 
 ![install](/Src/Images/installer.png)
-4. Une fois l'installation terminée, redémarrez Node-RED pour que les changements prennent effet.
+
+6. Une fois l'installation terminée, redémarrez Node-RED pour que les changements prennent effet.
 
 ### Bibliothèques à installer
 
