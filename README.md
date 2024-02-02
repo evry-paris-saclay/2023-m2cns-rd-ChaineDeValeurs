@@ -72,11 +72,11 @@ Une fois que Node-RED est en cours d'exécution, vous pouvez ajouter des bibliot
 
 Pour importer un fichier JSON associé à votre projet, vous pouvez suivre ces étapes :
 
-1- Allez dans les paramètres de votre projet.
-2- Recherchez l'option ou l'onglet permettant d'importer des fichiers ou des données.
-3- Sélectionnez l'option d'importation de fichier.
-4- Choisissez le fichier JSON associé à votre projet depuis l'emplacement où il est stocké sur votre ordinateur.
-5- Suivez les instructions à l'écran pour terminer le processus d'importation.
+1. Allez dans les paramètres de votre projet.
+2. Recherchez l'option ou l'onglet permettant d'importer des fichiers ou des données.
+3. Sélectionnez l'option d'importation de fichier.
+4. Choisissez le fichier JSON associé à votre projet depuis l'emplacement où il est stocké sur votre ordinateur.
+5. Suivez les instructions à l'écran pour terminer le processus d'importation.
 
 ### Bibliothèques à installer
 
