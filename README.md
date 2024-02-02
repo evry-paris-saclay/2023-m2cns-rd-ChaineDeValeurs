@@ -448,50 +448,52 @@ Dans ce code, vous itérez sur chaque classe, calculez les valeurs de faux posit
 
 ## Dataset
 
-This dataset was obtained as part of the Medical Waste Treating 4.0 project, funded by the Tuscany Region. The primary purpose of the dataset is to serve as a valuable resource for developing and testing computer vision methods for the initial sorting of medical waste.
+Ce dataset a été obtenu dans le cadre du projet Medical Waste Treating 4.0, financé par la région de Toscane. L'objectif principal de ce jeu de données est de servir de ressource précieuse pour le développement et le test de méthodes de vision par ordinateur pour le tri initial des déchets médicaux.
 
-### Acquisition Details
+### Détails de l'acquisition
 
-The dataset was captured using an OAK-D camera with the following technical specifications, which can be found [here](https://docs.luxonis.com/projects/hardware/en/latest/pages/BW1098OAK.html).
+Le jeu de données a été capturé à l'aide d'une caméra OAK-D avec les spécifications techniques disponibles [ici](https://docs.luxonis.com/projects/hardware/en/latest/pages/BW1098OAK.html).
 
-### Sample Structure
+### Structure des échantillons
 
-Each sample in the dataset comprises three images:
+Chaque échantillon du jeu de données est composé de trois images :
 
-- RGB Image: 1920 x 1080 resolution
-- Right Image (Stereo Pair): 640 x 400 grayscale
-- Left Image (Stereo Pair): 640 x 400 grayscale
+- Image RVB : Résolution de 1920 x 1080
+- Image de droite (Paire stéréo) : 640 x 400 en niveaux de gris
+- Image de gauche (Paire stéréo) : 640 x 400 en niveaux de gris
 
-Example filenames:
-- `timestamp.jpg`: RGB Image
-- `timestamp_r.png`: Right image in the stereo pair
-- `timestamp_l.png`: Left image in the stereo pair
+Exemples de noms de fichiers :
+- `timestamp.jpg` : Image RVB
+- `timestamp_r.png` : Image de droite de la paire stéréo
+- `timestamp_l.png` : Image de gauche de la paire stéréo
 
-### Categories
+### Catégories
 
-The dataset includes the following categories of medical waste:
+Le jeu de données comprend les catégories de déchets médicaux suivantes :
 
-- gauze
-- glove pair latex
-- glove pair nitrile
-- glove pair surgery
-- glove single latex
-- glove single nitrile
-- glove single surgery
-- medical cap
-- medical glasses
-- shoe cover pair
-- shoe cover single
-- test tube
-- urine bag
+- gaze
+- paire de gants en latex
+- paire de gants en nitrile
+- paire de gants chirurgicaux
+- gant unique en latex
+- gant unique en nitrile
+- gant unique chirurgical
+- calotte médicale
+- lunettes médicales
+- paire de couvre-chaussures
+- couvre-chaussure unique
+- tube à essai
+- sac d'urine
 
 ### Attribution
 
-The dataset is made available under the Creative Commons Attribution 4.0 International License.
+Le jeu de données est mis à disposition sous la licence Creative Commons Attribution 4.0 International.
 
-- Dataset Citation: Bruno, A., Martinelli, M., & Moroni, D. (2022). Medical-Waste-4.0-Dataset: v0.1 (v0.1) [Data set]. Zenodo. [https://doi.org/10.5281/zenodo.7643417](https://doi.org/10.5281/zenodo.7643417).
+- Citation du jeu de données : Bruno, A., Martinelli, M., & Moroni, D. (2022). Medical-Waste-4.0-Dataset : v0.1 (v0.1) [Data set]. Zenodo. [https://doi.org/10.5281/zenodo.7643417](https://doi.org/10.5281/zenodo.7643417).
 
-Please cite the dataset appropriately if you use it in your work.
+Veuillez citer le jeu de données de manière appropriée si vous l'utilisez dans votre travail.
+
+
 
 
 
