@@ -45,10 +45,16 @@ Ce guide explique comment installer Node-RED en utilisant Docker et comment ajou
 
 2. Exécutez la commande suivante pour démarrer Node-RED dans un conteneur Docker :
 ```
-docker run -it -p 1880:1880 --name mynodered nodered/node-red
+docker run -v /chemin/vers/mon/repertoire:/data -p 1880:1880 nodered/node-red
 ```
 
-Cette commande téléchargera et exécutera l'image Docker officielle de Node-RED. Le port 1880 sera exposé sur votre machine hôte.
+Cette commande Docker est utilisée pour exécuter Node-RED dans un conteneur Docker tout en montant un volume pour enregistrer les données dans un répertoire spécifié sur votre système hôte. Voici une explication détaillée :
+
+- docker run: Cette commande est utilisée pour exécuter un conteneur Docker.
+- -v /chemin/vers/mon/repertoire:/data: Cet argument monte un volume en reliant un répertoire sur votre système hôte (le répertoire de votre choix, tel que /chemin/vers/mon/repertoire) à un répertoire dans le conteneur Docker (ici, /data). 
+Cela permet à Node-RED d'accéder et d'enregistrer des données dans le répertoire spécifié sur votre système hôte.
+- -p 1880:1880: Cet argument expose le port 1880 de Node-RED dans le conteneur Docker sur le port 1880 de votre machine hôte, permettant ainsi d'accéder à l'interface utilisateur de Node-RED depuis votre navigateur web.
+- nodered/node-red: C'est l'image Docker officielle de Node-RED que vous souhaitez exécuter dans votre conteneur Docker.
 
 3. Ouvrez votre navigateur web et accédez à l'adresse http://localhost:1880 pour accéder à l'interface utilisateur de Node-RED.
 
