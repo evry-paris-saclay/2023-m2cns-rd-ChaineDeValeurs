@@ -37,7 +37,7 @@ flowchart TD;
 
 
 
-Pour plus de détails, veuillez consulter le [rapport](./Src/Docs/Rapport_V0.pdf) et la [présentation](./Src/Docs/Presentation_V0.pdf).
+Pour plus de détails, veuillez consulter le [rapport](./Docs/Rapport_V0.pdf) et la [présentation](./Docs/Presentation_V0.pdf).
 
 ## Installation et Configuration
 ### Installation de Node-RED avec Docker
@@ -75,11 +75,14 @@ Une fois que Node-RED est en cours d'exécution, vous pouvez ajouter des bibliot
 1. Dans votre navigateur web, accédez à l'adresse http://localhost:1880.
 
 2. Cliquez sur l'icône de menu en haut à droite de la fenêtre, puis sélectionnez "Manage palette".
+
 ![manage](/Src/Images/palette.png)
 
-3. Dans l'onglet "Install", vous pouvez rechercher les bibliothèques supplémentaires à installer. Pour chaque bibliothèque mentionnée dans ce guide, recherchez son nom et cliquez sur "Install".
+4. Dans l'onglet "Install", vous pouvez rechercher les bibliothèques supplémentaires à installer. Pour chaque bibliothèque mentionnée dans ce guide, recherchez son nom et cliquez sur "Install".
+5. 
 ![install](/Src/Images/installer.png)
-4. Une fois l'installation terminée, redémarrez Node-RED pour que les changements prennent effet.
+
+6. Une fois l'installation terminée, redémarrez Node-RED pour que les changements prennent effet.
 
 ### Bibliothèques à installer
 
@@ -112,7 +115,7 @@ Assurez-vous d'installer les bibliothèques suivantes à l'aide de l'interface d
 pid_file mosquitto.pid
 persistence true
 persistence_location mosquitto.db
-log_dest file C:\Program Files\mosquitto\mosquitto.log
+log_dest file D:\mosquitto\mosquitto.log
 
 # Définition du listener
 listener 1883
@@ -162,6 +165,10 @@ Pour configurer les nœuds Node-RED pour une utilisation avec MQTT, veuillez sui
 
 Veillez à consulter la documentation de Node-RED et de MQTT pour des instructions spécifiques à votre environnement et à vos cas d'utilisation.
 
+7. pour surveiller les echange MTTQ nous avons utiliser MTTQ Explorer 
+
+![MTTQ EXplorer](/Src/Images/MTTQ%20EXPLORER.png)
+
 ## Arduino
 
 ### Instructions d'installation du code Arduino
@@ -187,6 +194,9 @@ Les détails spécifiques sur la configuration des branchements matériels seron
 
 Le code de chaque ESP sera fourni de manière générique, ce qui permettra aux utilisateurs de l'adapter en fonction de leur propre configuration matérielle et de leurs besoins spécifiques.
 
+### exemple de branchement sur l'ESP_2 
+
+![branchement ESP_2](/Src/Images/exemple%20branchement%20esp_2.jpg)
 ## Plateforme IoT avec Node-RED 
 
 Nous avons mis en place une plateforme IoT basée sur Node-RED pour centraliser et gérer notre projet de gestion des déchets de santé. Cette plateforme permet de coordonner les différentes étapes du processus, depuis la détection et la classification des déchets jusqu'à leur traitement final.
@@ -214,6 +224,8 @@ Dans notre projet, la plateforme Node-RED joue un rôle crucial dans la coordina
 
 ![Flow Node](/Src/Images/flow%20Node.jpg)
 
+
+![Simulation du Flux](/Src/Images/simulation%20de%20fonctionement.png)
 
 ### Machine Learning
 ## Instructions pour la mise en place de l'environnement ML
